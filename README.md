@@ -40,3 +40,7 @@
 ### Execute Commands
 
 - `docker-compose exec <service> <command>`: Execute a command in a running service.
+
+### Resource
+
+- thanks for brain holt and his course : <div> <a href="https://frontendmasters.com/courses/complete-intro-containers/" /> complete-intro-containers </div>
