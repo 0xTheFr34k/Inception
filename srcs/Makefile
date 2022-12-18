@@ -1,5 +1,5 @@
 all:
-	docker-compose build && docker-compose up
+	docker-compose build --no-cache --force-rm && docker-compose up
 
 # Stop and remove the containers and volumes
 clean :

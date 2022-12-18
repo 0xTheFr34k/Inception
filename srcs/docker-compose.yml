@@ -8,8 +8,6 @@ services:
       - DB:/var/lib/mysql
     networks:
       - Inception-network
-    ports:
-      - 3306:3306
   wordpress:
     build:
       context: requirements/wordpress

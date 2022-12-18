@@ -1,12 +1,10 @@
 FROM debian:buster AS mariadb
 
-EXPOSE 3306
-
-RUN apt-get update && apt-get install -y procps 
+EXPOSE 3306 
 
 RUN apt update && apt install -y mariadb-server
 
-COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/
+COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 COPY ./conf/mysql_db.conf /var/www/mysql_db.conf
 
