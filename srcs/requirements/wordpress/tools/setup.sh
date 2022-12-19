@@ -9,6 +9,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp core config --allow-root --dbhost=${WP_HOST} --dbname=${WP_DATABASE_NAME} --dbuser=${WP_DATABASE_USER} --dbpass=${WP_DATABASE_PASSWORD};
     wp core install --allow-root --url=${DOMAIN_NAME} --title=${WP_TITLE} --admin_user=${WP_ADMIN_USER} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL};
     wp user create --allow-root ${WP_USER} ${WP_EMAIL} --user_pass=${WP_PASSWORD};
+    # mkdir /var/www/html/adminer;
+    # wget https://www.adminer.org/latest.php -O /var/www/html/adminer/adminer.php > /dev/null 2>&1;
     # make file system writable
     chmod -R 777 /var/www/html;
     chown -R www-data:www-data /var/www/html;
@@ -24,6 +26,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config set WP_CACHE true --allow-root;
     wp config set WP_REDIS_HOST "redis" --allow-root;
     wp config set WP_REDIS_PORT 6379 --allow-root;
+
     
 fi
 

@@ -28,6 +28,7 @@ services:
       - Inception-network
     depends_on:
       - mariadb
+      - adminer
   nginx:
     build:
       context: requirements/nginx
@@ -53,11 +54,17 @@ services:
     build:
       context: requirements/bonus/ftp
       dockerfile: Dockerfile
-    ports:
-      - "21:21"
     networks:
       - Inception-network
     volumes:
       - WordPress:/var/www/html
     depends_on:
       - wordpress
+  adminer:
+    build:
+      context: requirements/bonus/adminer
+      dockerfile: Dockerfile
+    networks:
+      - Inception-network
+    depends_on:
+      - mariadb
