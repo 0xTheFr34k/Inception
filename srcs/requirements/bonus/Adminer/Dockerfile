@@ -8,6 +8,8 @@ RUN mkdir -p /var/www/html
 
 RUN wget https://www.adminer.org/latest.php -O /var/www/html/index.php
 
+ENV ADMINER_DEFAULT_SERVER=mariadb
+
 EXPOSE 8080
 
 CMD ["php","-S","[::]:8080","-t","/var/www/html"]

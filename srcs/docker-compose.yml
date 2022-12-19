@@ -41,6 +41,7 @@ services:
       - Inception-network
     depends_on:
       - wordpress
+      - static_website
   redis:
     build:
       context: requirements/bonus/redis
@@ -68,3 +69,9 @@ services:
       - Inception-network
     depends_on:
       - mariadb
+  static_website:
+    build:
+      context: requirements/bonus/static_website
+      dockerfile: Dockerfile
+    networks:
+      - Inception-network
