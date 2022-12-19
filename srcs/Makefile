@@ -1,11 +1,13 @@
 all:
-	docker-compose build --no-cache --force-rm && docker-compose up
+	docker-compose up --build
 
-# Stop and remove the containers and volumes
+
+
 clean :
 	docker-compose down
 	docker volume prune -f
 	docker network prune -f
 	docker container prune -f
+	docker image prune -f
 	
 re : clean all

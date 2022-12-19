@@ -1,4 +1,12 @@
 version: '3'
+volumes:
+  WordPress:
+  DB:
+networks:
+  Inception-network:
+    name: Inception-network
+    driver: bridge
+  
 services:
   mariadb:
     build:
@@ -32,11 +40,24 @@ services:
       - Inception-network
     depends_on:
       - wordpress
-
-volumes:
-  WordPress:
-  DB:
-networks:
-  Inception-network:
-    name: Inception-network
-    driver: bridge
+  redis:
+    build:
+      context: requirements/bonus/redis
+      dockerfile: Dockerfile
+    networks:
+      - Inception-network
+    depends_on:
+      - wordpress
+      - ftp
+  ftp:
+    build:
+      context: requirements/bonus/ftp
+      dockerfile: Dockerfile
+    ports:
+      - "21:21"
+    networks:
+      - Inception-network
+    volumes:
+      - WordPress:/var/www/html
+    depends_on:
+      - wordpress
