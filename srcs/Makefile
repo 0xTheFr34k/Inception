@@ -1,16 +1,21 @@
-all:
+
+build:
+	docker-compose build && docker-compose up
+
+up:
+	docker-compose up
+
+run:
 	docker-compose up --build
 
-clean :
+down:
 	docker-compose down
+
+clean:
 	docker-compose rm -f
 	docker rmi -f $$(docker images -a -q)
 	docker volume rm -f $$(docker volume ls -q)
 	docker network prune -f
 	docker container prune -f
-
-fclean :
-	rm -rf ${HOME}/data/WordPress/*
-	rm -rf ${HOME}/data/DB/*
 
 re : fclean all

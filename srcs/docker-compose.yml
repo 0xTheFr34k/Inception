@@ -1,13 +1,15 @@
 version: '3'
 volumes:
   WordPress:
+    driver: local
     driver_opts:
-      type: volume
+      type: bind
       device: /Users/ytaya/data/WordPress
       o: bind
   DB:
+    driver: local
     driver_opts:
-      type: volume
+      type: bind
       device: /Users/ytaya/data/DB
       o: bind
 
