@@ -1,7 +1,16 @@
 version: '3'
 volumes:
   WordPress:
+    driver_opts:
+      type: volume
+      device: /Users/ytaya/data/WordPress
+      o: bind
   DB:
+    driver_opts:
+      type: volume
+      device: /Users/ytaya/data/DB
+      o: bind
+
 networks:
   Inception-network:
     name: Inception-network

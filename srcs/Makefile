@@ -3,9 +3,14 @@ all:
 
 clean :
 	docker-compose down
-	docker volume prune -f
+	docker-compose rm -f
+	docker rmi -f $$(docker images -a -q)
+	docker volume rm -f $$(docker volume ls -q)
 	docker network prune -f
 	docker container prune -f
-	docker image prune -f
-	
-re : clean all
+
+fclean :
+	rm -rf ${HOME}/data/WordPress/*
+	rm -rf ${HOME}/data/DB/*
+
+re : fclean all
