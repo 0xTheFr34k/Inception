@@ -53,6 +53,7 @@ services:
     depends_on:
       - wordpress
       - static_website
+      - portainer
   redis:
     build:
       context: requirements/bonus/redis
@@ -86,3 +87,11 @@ services:
       dockerfile: Dockerfile
     networks:
       - Inception-network
+  portainer:
+    build:
+      context: requirements/bonus/portainer
+      dockerfile: Dockerfile
+    networks:
+      - Inception-network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

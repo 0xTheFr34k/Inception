@@ -6,9 +6,9 @@ RUN service apache2 start
 
 RUN mkdir -p /var/www/html
 
-RUN wget https://www.adminer.org/latest.php -O /var/www/html/index.php
+RUN wget --no-check-certificate https://www.adminer.org/latest.php -O /var/www/html/index.php
 
-ENV ADMINER_DEFAULT_SERVER=mariadb
+# ENV ADMINER_DEFAULT_SERVER=mariadb
 
 EXPOSE 8080
 

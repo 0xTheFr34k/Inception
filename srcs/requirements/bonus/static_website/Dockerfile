@@ -6,8 +6,8 @@ RUN mkdir -p /var/www/html/
 
 COPY ./public_html/ ./var/www/html/
 
-EXPOSE 8000
+EXPOSE 5555
 
 WORKDIR /var/www/html
 
-CMD ["php","-S","[::]:8000","-t","/var/www/html"]
+CMD ["php","-S","[::]:5555","-t","/var/www/html"]

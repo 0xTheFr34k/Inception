@@ -18,4 +18,10 @@ clean:
 	docker network prune -f
 	docker container prune -f
 
+fclean:
+	docker system prune -a -f
+	docker-compose down --rmi all --volumes --remove-orphans
+	rm -rf /Users/ytaya/data/DB/*
+	rm -rf /Users/ytaya/data/WordPress/*
+
 re : fclean all
