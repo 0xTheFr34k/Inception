@@ -21,6 +21,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config set WP_CACHE true --allow-root;
     wp config set WP_REDIS_HOST "redis" --allow-root;
     wp config set WP_REDIS_PORT 6379 --allow-root;
+    wp plugin install query-monitor --activate --allow-root;
 fi
 
 echo "Starting "$@
