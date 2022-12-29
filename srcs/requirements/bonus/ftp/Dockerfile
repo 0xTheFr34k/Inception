@@ -1,17 +1,25 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ytaya <ytaya@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/29 04:52:47 by ytaya             #+#    #+#              #
+#    Updated: 2022/12/29 04:52:55 by ytaya            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 FROM debian:buster
 
-# Install FTP server
 RUN apt-get update && \
     apt-get install -y vsftpd
 
-# Create FTP user and set password
 RUN useradd -m ftpuser && \
     echo "ftpuser:bleed" | chpasswd
 
-# RUN mkdir -p /var/run/vsftpd/empty
 COPY ./conf/ /etc/
 
-# Expose FTP port
 EXPOSE 21
 
 CMD ["vsftpd"]

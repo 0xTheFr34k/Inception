@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ytaya <ytaya@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/29 04:52:10 by ytaya             #+#    #+#              #
+#    Updated: 2022/12/29 04:55:22 by ytaya            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 FROM debian:buster AS wordpress
 
 EXPOSE 9000
@@ -21,8 +33,6 @@ WORKDIR /tmp
 RUN chmod +x setup.sh
 
 WORKDIR /var/www/html
-
-# USER www-data
 
 ENTRYPOINT [ "sh","/tmp/setup.sh" ]
 

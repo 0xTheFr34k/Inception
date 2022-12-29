@@ -1,27 +1,27 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ytaya <ytaya@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/29 04:51:25 by ytaya             #+#    #+#              #
+#    Updated: 2022/12/29 04:51:26 by ytaya            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 build:
+	docker-compose build
+
+up:
 	docker-compose up
-
-# up:
-# 	docker-compose up
-
-run:
-	docker-compose up --build
 
 down:
 	docker-compose down
 
-clean:
-	docker-compose rm -f
-	docker rmi -f $$(docker images -a -q)
-	docker volume rm -f $$(docker volume ls -q)
-	docker network prune -f
-	docker container prune -f
-
-fclean:
+clean: down
 	docker system prune -a -f
 	docker-compose down --rmi all --volumes --remove-orphans
-# rm -rf /Users/ytaya/data/WordPress/*
-# rm -rf /Users/ytaya/data/DB/*
 
-re : fclean all
+re : down clean build up

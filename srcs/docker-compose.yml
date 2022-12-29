@@ -15,8 +15,6 @@ volumes:
 
 networks:
   Inception-network:
-    name: Inception-network
-    driver: bridge
   
 services:
   mariadb:
